@@ -2,17 +2,17 @@
     "modules": [
         {
             "name": "module1",
-            "src": "module1.js",
+            "src": "sample_modules/module1.js",
 			"type":"js"
         },
 		{
             "name": "module2",
-            "src": "module2.css",
+            "src": "sample_modules/module2.css",
 			"type":"css"
         },
 		{
             "name": "module3",
-            "src": "module3.js",
+            "src": "sample_modules/module3.js",
 			"type":"js"
         }
     ]
