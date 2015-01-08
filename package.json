@@ -27,7 +27,7 @@
     "test": "grunt travis --verbose"
   },
   "keywords": [],
-  "devDependencies": {
+  "dependencies": {
     "archiver": "^0.13.1",
     "colors": "^1.0.3",
     "mkdirp": "^0.5.0",
