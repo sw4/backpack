@@ -2,18 +2,21 @@
     "modules": [
         {
             "name": "module1",
-            "src": "sample_modules/module1.js",
-			"type":"js"
+            "src": [{
+				"src":"sample_modules/module1.js",
+				"dest":"javascript.js"
+			},
+			{
+				"src":"sample_modules/module3.js",
+				"dest":"javascript.js"
+			}]
         },
 		{
             "name": "module2",
-            "src": "sample_modules/module2.css",
-			"type":"css"
-        },
-		{
-            "name": "module3",
-            "src": "sample_modules/module3.js",
-			"type":"js"
+            "src": [{
+				"src":"sample_modules/mod2ule3.js",
+				"dest":"javascript2.js"
+			}]
         }
     ]
 }
