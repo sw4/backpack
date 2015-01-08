@@ -23,6 +23,7 @@ module.exports = function (req, res) {
 
 	function backpack(data){
 
+
 		// Create lookup array of selected modules
 		var modules=[],
 			querystring = decodeURIComponent(data),
@@ -59,7 +60,6 @@ module.exports = function (req, res) {
 					});	
 			});	
 		}
-		
 		function doCompile(){
 			return new Promise(function(resolve, reject) {
 				// Cross reference against configures modules
@@ -67,8 +67,12 @@ module.exports = function (req, res) {
 				config.modules.forEach(function(module, index, array){
 					// Module found
 					if(modules.indexOf(module.name)>-1){
+						// resolve(module.name + ' detected...compiling');
 						// module found...so compile the assets...
 						// loop through source assets
+						
+							
+						
 						module.src.forEach(function(asset, index, array){
 							if (!fs.existsSync(asset.src)) {
 								log="ERROR: "+asset.src+" in "+module.name+" not found..skipping...";
@@ -140,7 +144,6 @@ module.exports = function (req, res) {
 			log='Build session finalized: '+session;
 			console.log(log.yellow);
 			console.log('Build process completed'.bgCyan.black);
-			res.end(data);
 			req.end();				
 		}
 
@@ -157,7 +160,7 @@ module.exports = function (req, res) {
 			}, function(err) {
 				console.log(err.bgRed.white); 
 			})
-			.then(doDownload);		
+			.then(doDownload);				
 
 	}	
 }
