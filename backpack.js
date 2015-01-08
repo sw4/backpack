@@ -13,11 +13,11 @@ module.exports = function (req, res) {
 		rmdir = require('rimraf'),
 		colors = require('colors'),
 		log='';
-		
 	req.on('data', function(data) {	
 		if ((!config.method || config.method === req.method) && url.parse(req.url, true).pathname == backpackUrl) {	
 			// Run the magic!		
-			backpack(data);
+			console.log("Build process started".bgCyan.black);
+			backpack(data);			
 		}
 	});	
 
@@ -101,7 +101,7 @@ module.exports = function (req, res) {
 					});
 					resolve('Module bundling complete');
 				}else{
-					reject("No assets could be resolved, please check each src entry in backpack.json");
+					reject("Build failed. No assets could be resolved, please check each src entry in backpack.json");
 				}
 				
 			});
@@ -109,6 +109,7 @@ module.exports = function (req, res) {
 		
 		function doZip(){	
 			return new Promise(function(resolve, reject) {	
+				if(assets.length===0) reject('Build failed. Error compiling archive: '+session+', no assets could be resolved');
 				var archive = archiver('zip'),
 					output = fs.createWriteStream(session + '/'+pkg.name+'.zip');				
 				output.on('close', function() {
@@ -130,6 +131,7 @@ module.exports = function (req, res) {
 		}
 		
 		function doDownload(){		
+			if(assets.length===0) reject('Build failed. Error serving archive: '+session+', no assets could be resolved');
 			res.setHeader('Content-disposition', 'attachment; filename='+session);
 			res.setHeader('Content-type', 'application/zip');
 			var file = fs.createReadStream(session+'/'+pkg.name+'.zip');
@@ -147,7 +149,7 @@ module.exports = function (req, res) {
 				console.log(result.green);
 				return doCompile();
 			}, function(err) {
-				console.log(err.bgRed.white); 		
+				console.log(err.bgRed.white);
 			})		
 			.then(function(result){
 				console.log(result.green);
