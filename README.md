@@ -45,12 +45,12 @@ You will need to create a `backpack.json` file in your project directory. This f
 ####`url`
 ######(string) optional, defaults to `/backpack`
 
-This is the URL backpack will listen to in order to trigger a custom build- i.e. when this URL is requested.
+This is the URL backpack will listen to in order to trigger a custom build.
 
 ####`method` 
 ######(string) optional, defaults to `POST`
 
-Either POST or GET. In conjunction with the URL, also check if the correct request method is being used (in case you want to use GET to serve the custom build page, and POST with the same URL to trigger it).
+Either POST or GET. In conjunction with the URL, backpack will also check if the correct request method is being used (in case you want to use GET to serve the custom build page, and POST with the same URL to trigger it).
 
 ####`modules` 
 ######(array) required
