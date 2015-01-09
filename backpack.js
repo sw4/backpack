@@ -92,7 +92,7 @@ module.exports = function (req, res) {
 								bundle=bundleRef.length-1;
 							}						
 							bundles[bundle].src.push(asset.src);
-							assets.push(session+'/'+dest);
+							assets.push(dest);
 							log="PROCESS: "+asset.src+" in "+module.name+" linked to "+asset.dest;
 							console.log(log.grey);
 						});
@@ -125,22 +125,24 @@ module.exports = function (req, res) {
 					log='Error compiling archive: '+err;
 					console.log(log.red);
 					reject('Error compiling archive: '+session+', '+err);
-				});			
+				});
 				archive.pipe(output);	
 				archive.bulk([
-				  {src: assets}
+				  {expand: true, cwd: session+'/', src: assets}
 				]);
 				archive.finalize();		
 			});
 		}
-		
+		function doCleanup(){
+			rmdir(session+'/', function(error){});// clean-up generated files. TODO: utilise streams
+		}		
 		function doDownload(){		
 			if(assets.length===0) reject('Build failed. Error serving archive: '+session+', no assets could be resolved');
-			res.setHeader('Content-disposition', 'attachment; filename='+session);
+			res.setHeader('Content-disposition', 'attachment; filename='+pkg.name);
 			res.setHeader('Content-type', 'application/zip');
 			var file = fs.createReadStream(session+'/'+pkg.name+'.zip');
 			file.pipe(res);
-			rmdir(session+'/', function(error){});// clean-up generated files. TODO: utilise streams
+			doCleanup();
 			log='Build session finalized: '+session;
 			console.log(log.yellow);
 			console.log('Build process completed'.bgCyan.black);
@@ -153,12 +155,14 @@ module.exports = function (req, res) {
 				return doCompile();
 			}, function(err) {
 				console.log(err.bgRed.white);
+				doCleanup();
 			})		
 			.then(function(result){
 				console.log(result.green);
 				return doZip();
 			}, function(err) {
 				console.log(err.bgRed.white); 
+				doCleanup();
 			})
 			.then(doDownload);				
 
