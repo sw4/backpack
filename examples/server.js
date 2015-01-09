@@ -1,8 +1,7 @@
 var http = require('http'),
     fs = require('fs'),
-    url = require('url'),
-    qs = require('querystring'),
-	backpack = require('./backpack-js'),
+	open = require('open'),
+	backpack = require('backpack-js'),
 	port=8080,
 	server = http.createServer(function(req, res) {
 			// make backpack listen to requests..	
@@ -14,4 +13,6 @@ var http = require('http'),
 				});
 			}
 	});	
-server.listen(8080);
+server.listen(8080, 'localhost', function(){
+	open('http://localhost:8080');
+});
