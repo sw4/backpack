@@ -10,9 +10,9 @@ backpack.js
 [![Status](https://badge.fury.io/gh/sw4%2Fbackpack.png)](https://github.com/sw4/backpack)
 [![NPM](https://badge.fury.io/js/backpack.png)](https://www.npmjs.org/package/backpack)
 
-backpack.js (Backpack, backpack) is a Node.js module to allow users to create custom builds of your project from your website. Backpack is designed to run on a Node.js server deployment, and listens for a custom build selection to be requested, assembles it, and pushes it back to the client in `.ZIP` form.
+backpack.js (backpack-js, Backpack, backpack) is a Node.js module to allow users to create custom builds of your project from your website. Backpack is designed to run on a Node.js server deployment, and listens for a custom build selection to be requested, assembles it, and pushes it back to the client in `.ZIP` form.
 
-`$ npm install backpack --save-dev`
+`$ npm install backpack-js --save-dev`
 
 How to use
 ---
