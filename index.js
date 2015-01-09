@@ -2,7 +2,6 @@ module.exports = function(req, res) {
 
     var fs = require('fs'),
         url = require('url'),
-        qs = require('querystring'),
         Promise = require('promise'),
         cwd = process.cwd(),
         mkdirp = require('mkdirp'),
@@ -28,7 +27,7 @@ module.exports = function(req, res) {
             querystring = decodeURIComponent(data),
             assets = [];
 
-        querystring.split('&').forEach(function(kv, index, array) {
+        querystring.split('&').forEach(function(kv) {
             var pair = kv.split('=');
             if (pair[0].indexOf('backpack') > -1 && pair[1]) {
                 modules.push(pair[1]);
@@ -48,7 +47,6 @@ module.exports = function(req, res) {
 
         function doInit() {
             return new Promise(function(resolve, reject) {
-                var mkdirp = require('mkdirp');
                 mkdirp(session, function(err) {
                     if (!err) {
                         resolve('Build session created');
@@ -65,13 +63,13 @@ module.exports = function(req, res) {
                 var bundleRef = [],
                     bundles = [],
                     pack = true;
-                config.modules.forEach(function(module, index, array) {
+                config.modules.forEach(function(module) {
                     // Module found
                     if (modules.indexOf(module.name) > -1) {
                         // module found...so compile the assets...
                         // loop through source assets													
 
-                        module.src.forEach(function(asset, index, array) {
+                        module.src.forEach(function(asset) {
                             if (!fs.existsSync(asset.src)) {
                                 console.log(chalk.red("ERROR: " + asset.src + " in " + module.name + " not found..skipping..."));
                                 return;
@@ -86,7 +84,7 @@ module.exports = function(req, res) {
                                 bundles.push({
                                     "dest": dest,
                                     src: []
-                                })
+                                });
                                 bundle = bundleRef.length - 1;
                             }
                             pack = true;
@@ -104,7 +102,7 @@ module.exports = function(req, res) {
 
                         });
 
-                    };
+                    }
                 });
                 if (bundles.length > 0) {
                     bundles.forEach(function(bundle) {
@@ -142,7 +140,7 @@ module.exports = function(req, res) {
         }
 
         function doCleanup() {
-            rmdir(session + '/', function(error) {}); // clean-up generated files. TODO: utilise streams
+            rmdir(session + '/', function() {}); // clean-up generated files. TODO: utilise streams
         }
 
         function doDownload() {
@@ -175,4 +173,4 @@ module.exports = function(req, res) {
             .then(doDownload);
 
     }
-}
+};
