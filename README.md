@@ -57,22 +57,22 @@ Either POST or GET. In conjunction with the URL, also check if the correct reque
 
 Array of module definitions, here you constitute module mappings, assets and bundling.
 
-####``modules/name` 
+####`modules/name` 
 ######(string) required
 
 Name of the module, this is mapped to incoming requests to determine which modules to include in a build.
 
-####``modules/src` 
+####`modules/src` 
 ######(array) required
 
 List of files which constitute the module
 
-####``modules/src/src` 
+####`modules/src/src` 
 ######(string) 
 
 Path to file
 
-`modules/src/dest` 
+####``modules/src/dest` 
 ######(string) optional, defaults to src value
 
 Path/name to give the output file within the custom build. It is important to note that you can give multiple `src` entries accross different modules the same `dest` entry. Where two or more files are given the same `dest`, they are bundled together into a single file.
