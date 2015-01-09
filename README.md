@@ -93,6 +93,7 @@ To launch a new custom build, you will need to create a request which matches th
 
 Backpack looks for the variable `backpack` in the request, representing an array of modules mapped to entries in `backpack.json`. An example form may look like (also see `example/index.html`):
 
+```(html)
    <form method="post" action="backpack">
       <h1>Available Modules</h1>
       <label>Module 1
@@ -106,6 +107,7 @@ Backpack looks for the variable `backpack` in the request, representing an array
       </label>
       <input type="submit"  id="submit" value="Build!" />
    </form>
+```
 
 Here, `module1`, `module2` etc relate to module name values in `backpack.json`. Backpack finds the correct module entry, then creates a build based on the `src` definitions of that module.
    
