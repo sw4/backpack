@@ -14,6 +14,21 @@ backpack.js (backpack-js, Backpack, backpack) is a Node.js module to allow users
 
 `$ npm install backpack-js --save-dev`
 
+Why backpack?
+---
+If you have a highly modular or module orientated project, it may be the case that users may only require a subset of modules. As such, it is more efficient to offer them a build only comprising of what they need, instead of a complete code dump.
+
+Backpack automates the process of users selecting the modules they want and getting a customised build. This means users can simply browse to your site, check some boxes and voila! Have a zip file containing exactly what they need.
+
+Backpack allows:
+
+- Seamless client integration
+- Multiple instances of the same script to be referenced between modules, and only included once in the final build
+- Multiple scripts across multiple modules to be automatically bundled together into the same file
+- Easy definition of unique project structures for different modules
+
+
+
 How to use
 ---
 
