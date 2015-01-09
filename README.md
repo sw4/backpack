@@ -1,4 +1,4 @@
-backpack.js
+backpack
 ======
 
 [![Build Status](https://img.shields.io/travis/sw4/backpack.svg?style=flat-square)](https://travis-ci.org/sw4/backpack)
