@@ -1,7 +1,7 @@
 {
-  "name": "backpack",
-  "title": "backpack.js",
-  "description": "backpack.js",
+  "name": "backpack-js",
+  "title": "backpack-js",
+  "description": "backpack-js",
   "version": "0.0.4",
   "homepage": "https://github.com/sw4/backpack",
   "author": {
@@ -26,7 +26,7 @@
   "scripts": {
     "test": "grunt travis --verbose"
   },
-  "keywords": [],
+  "keywords": ["node", "compile", "custom", "build", "module"],
   "dependencies": {
     "archiver": "^0.13.1",
     "colors": "^1.0.3",
