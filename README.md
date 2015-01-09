@@ -1,13 +1,13 @@
 backpack
 ======
 
-[![Build Status](https://img.shields.io/travis/sw4/backpack.svg?style=flat-square)](https://travis-ci.org/sw4/backpack)
-[![Dependency Status](https://img.shields.io/david/sw4/backpack.svg?style=flat-square)](https://david-dm.org/sw4/backpack)
-[![devDependency Status](https://img.shields.io/david/dev/sw4/backpack.svg?style=flat-square)](https://david-dm.org/sw4/backpack#info=devDependencies)
-[![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](https://github.com/sw4/backpack/blob/master/LICENSE-MIT.md)
-[![Issues](https://img.shields.io/github/issues/sw4/backpack.svg?style=flat-square)](https://github.com/sw4/backpack/issues)
-[![Release](https://img.shields.io/github/release/sw4/backpack.svg?style=flat-square)](https://github.com/sw4/backpack/releases)
-[![Status](https://badge.fury.io/gh/sw4%2Fbackpack.png)](https://github.com/sw4/backpack)
+[![Build Status](https://img.shields.io/travis/sw4/backpack-js.svg?style=flat-square)](https://travis-ci.org/sw4/backpack-js)
+[![Dependency Status](https://img.shields.io/david/sw4/backpack-js.svg?style=flat-square)](https://david-dm.org/sw4/backpack-js)
+[![devDependency Status](https://img.shields.io/david/dev/sw4/backpack-js.svg?style=flat-square)](https://david-dm.org/sw4/backpack-js#info=devDependencies)
+[![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](https://github.com/sw4/backpack-js/blob/master/LICENSE-MIT.md)
+[![Issues](https://img.shields.io/github/issues/sw4/backpack-js.svg?style=flat-square)](https://github.com/sw4/backpack-js/issues)
+[![Release](https://img.shields.io/github/release/sw4/backpack-js.svg?style=flat-square)](https://github.com/sw4/backpack-js/releases)
+[![Status](https://badge.fury.io/gh/sw4%2Fbackpack.png)](https://github.com/sw4/backpack-js)
 [![NPM](https://badge.fury.io/js/backpack.png)](https://www.npmjs.org/package/backpack)
 
 backpack.js (backpack-js, Backpack, backpack) is a Node.js module to allow users to create custom builds of your project from your website. Backpack is designed to run on a Node.js server deployment, and listens for a custom build selection to be requested, assembles it, and pushes it back to the client in `.ZIP` form.
@@ -113,4 +113,4 @@ Here, `module1`, `module2` etc relate to module name values in `backpack.json`. 
    
  ---------------------------------------------
 
-<sup>[backpack](https://github.com/sw4/backpack), written by [SW4](https://github.com/sw4)</sup>
+<sup>[backpack](https://github.com/sw4/backpack-js), written by [SW4](https://github.com/sw4)</sup>
