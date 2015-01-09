@@ -47,27 +47,33 @@ You will need to create a `backpack.json` file in your project directory. This f
 
 This is the URL backpack will listen to in order to trigger a custom build- i.e. when this URL is requested.
 
-######`method` (string) optional, defaults to `POST`
+####`method` 
+######(string) optional, defaults to `POST`
 
 Either POST or GET. In conjunction with the URL, also check if the correct request method is being used (in case you want to use GET to serve the custom build page, and POST with the same URL to trigger it).
 
-######`modules` (array) required
+####`modules` 
+######(array) required
 
 Array of module definitions, here you constitute module mappings, assets and bundling.
 
-`modules/name` (string) required
+####``modules/name` 
+######(string) required
 
 Name of the module, this is mapped to incoming requests to determine which modules to include in a build.
 
-`modules/src` (array) required
+####``modules/src` 
+######(array) required
 
 List of files which constitute the module
 
-`modules/src/src` (string) 
+####``modules/src/src` 
+######(string) 
 
 Path to file
 
-`modules/src/dest` (string) optional, defaults to src value
+`modules/src/dest` 
+######(string) optional, defaults to src value
 
 Path/name to give the output file within the custom build. It is important to note that you can give multiple `src` entries accross different modules the same `dest` entry. Where two or more files are given the same `dest`, they are bundled together into a single file.
 
