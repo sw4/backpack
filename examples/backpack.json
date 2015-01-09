@@ -1,0 +1,56 @@
+{
+    "url": "/backpack",
+    "modules": [
+        {
+            "name": "module1",
+            "src": [
+                {
+                    "src": "modules/js/function.js",
+                    "dest": "javascript.js"
+                },
+                {
+                    "src": "modules/js/variables.js",
+                    "dest": "javascript.js"
+                },
+                {
+                    "src": "modules/js/doesnt_exist.js",
+                    "dest": "javascript.js"
+                }
+            ]
+        },
+        {
+            "name": "module2",
+            "src": [
+                {
+                    "src": "modules/css/html.css",
+                    "dest": "styles.css"
+                },
+                {
+                    "src": "modules/css/body.css",
+                    "dest": "styles.css"
+                },
+                {
+                    "src": "modules/css/doesnt_exist.css",
+                    "dest": "styles.css"
+                },
+                {
+                    "src": "modules/css/input.css",
+                    "dest": "styles.css"
+                }
+            ]
+        },
+        {
+            "name": "module3",
+            "src": [
+                {
+                    "src": "modules/css/input.css",
+                    "dest": "styles.css"
+                },
+                {
+                    "src": "modules/css/hello_world.js",
+                    "dest": "javascript.js"
+                }
+            ]
+        }
+    ]
+}
