@@ -21,7 +21,7 @@ How to use
 Backpack Configuration (backpack.json)
 -----
 
-You will need to create a `backpack.json` file in your projects directory. This file contains all the relevant settings relating to your modules and how to conduct a customised build. An example file can be found in `examples\backpack.json`, the structure is e.g.:
+You will need to create a `backpack.json` file in your project directory. This file contains all settings related to your project's modules, and how to conduct a customised build. An example can be found in `examples\backpack.json`, the structure is e.g.:
 
 ```
 {
