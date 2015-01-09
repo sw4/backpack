@@ -111,6 +111,6 @@ Backpack looks for the variable `backpack` in the request, representing an array
 
 Here, `module1`, `module2` etc relate to module name values in `backpack.json`. Backpack finds the correct module entry, then creates a build based on the `src` definitions of that module.
    
-  
+ ---------------------------------------------
 
 <sup>[backpack](https://github.com/sw4/backpack), written by [SW4](https://github.com/sw4)</sup>
