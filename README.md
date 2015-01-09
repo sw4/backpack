@@ -55,12 +55,12 @@ Either POST or GET. In conjunction with the URL, backpack will also check if the
 ####`modules` 
 ######(array) required
 
-Array of module definitions, here you constitute module mappings, assets and bundling.
+Array of module definitions, here you set your module mappings, related assets and bundling.
 
 ####`modules/name` 
 ######(string) required
 
-Name of the module, this is mapped to incoming requests to determine which modules to include in a build.
+Name of the module, this is mapped to incoming requests to determine which modules are included in a build.
 
 ####`modules/src` 
 ######(array) required
