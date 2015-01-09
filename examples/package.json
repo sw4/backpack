@@ -1,0 +1,7 @@
+{
+  "name": "example",
+  "dependencies": {
+    "backpack-js": "0.0.4",
+    "open": "0.0.5"
+  }
+}
