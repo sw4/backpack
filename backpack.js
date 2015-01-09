@@ -63,38 +63,38 @@ module.exports = function (req, res) {
 		function doCompile(){
 			return new Promise(function(resolve, reject) {
 				// Cross reference against configures modules
-				var bundleRef=[], bundles=[];
+				var bundleRef=[], bundles=[], assetSrc=[];
 				config.modules.forEach(function(module, index, array){
 					// Module found
 					if(modules.indexOf(module.name)>-1){
-						// resolve(module.name + ' detected...compiling');
 						// module found...so compile the assets...
-						// loop through source assets
-						
-							
+						// loop through source assets													
 						
 						module.src.forEach(function(asset, index, array){
-							if (!fs.existsSync(asset.src)) {
-								log="ERROR: "+asset.src+" in "+module.name+" not found..skipping...";
-								console.log(log.red);
-								return;
+							if(assetSrc.indexOf(asset.src)<0){
+								if (!fs.existsSync(asset.src)) {
+									log="ERROR: "+asset.src+" in "+module.name+" not found..skipping...";
+									console.log(log.red);
+									return;
+								}
+								var dest=asset.dest || asset.src, bundle;
+								bundle=bundleRef.indexOf(dest);
+								assetSrc.push(asset.src);
+								if(bundle<0){
+									// add to lookup
+									bundleRef.push(dest);
+									// init new bundle config
+									bundles.push({
+										"dest":dest,
+										src:[]								
+									})
+									bundle=bundleRef.length-1;
+								}						
+								bundles[bundle].src.push(asset.src);
+								assets.push(dest);
+								log="PROCESS: "+asset.src+" in "+module.name+" linked to "+asset.dest;
+								console.log(log.grey);
 							}
-							var dest=asset.dest || asset.src, bundle;
-							bundle=bundleRef.indexOf(dest);
-							if(bundle<0){
-								// add to lookup
-								bundleRef.push(dest);
-								// init new bundle config
-								bundles.push({
-									"dest":dest,
-									src:[]								
-								})
-								bundle=bundleRef.length-1;
-							}						
-							bundles[bundle].src.push(asset.src);
-							assets.push(dest);
-							log="PROCESS: "+asset.src+" in "+module.name+" linked to "+asset.dest;
-							console.log(log.grey);
 						});
 						
 					};
