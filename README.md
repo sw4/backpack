@@ -72,7 +72,7 @@ List of files which constitute the module
 
 Path to file
 
-####``modules/src/dest` 
+####`modules/src/dest` 
 ######(string) optional, defaults to src value
 
 Path/name to give the output file within the custom build. It is important to note that you can give multiple `src` entries accross different modules the same `dest` entry. Where two or more files are given the same `dest`, they are bundled together into a single file.
