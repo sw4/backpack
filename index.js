@@ -11,12 +11,11 @@ module.exports = function(req, res) {
         backpackUrl = config.url || '/backpack',
         archiver = require('archiver'),
         rmdir = require('rimraf'),
-        colors = require('colors'),
-        log = '';
+        chalk = require('chalk');
     req.on('data', function(data) {
         if ((!config.method || config.method === req.method) && url.parse(req.url, true).pathname == backpackUrl) {
             // Run the magic!		
-            console.log("Build process started".bgCyan.black);
+            console.log(chalk.bgBlue("Build process started"));
             backpack(data);
         }
     });
@@ -37,15 +36,14 @@ module.exports = function(req, res) {
         });
 
         var session = pkg.name + '_' + Date.now();
-        log = 'Build session ' + session + ' requested...';
-        console.log(log.yellow);
+        console.log(chalk.yellow('Build session ' + session + ' requested...'));
 
         function concat(src, dest) {
             var out = src.map(function(filePath) {
                 return fs.readFileSync(filePath, 'utf-8');
             });
             fs.writeFileSync(session + '/' + dest, out.join('\n'), 'utf-8');
-            console.log('SUCCESS: ' + dest + ' built.');
+            console.log(chalk.white('SUCCESS: ' + dest + ' built.'));
         }
 
         function doInit() {
@@ -75,8 +73,7 @@ module.exports = function(req, res) {
 
                         module.src.forEach(function(asset, index, array) {
                             if (!fs.existsSync(asset.src)) {
-                                log = "ERROR: " + asset.src + " in " + module.name + " not found..skipping...";
-                                console.log(log.red);
+                                console.log(chalk.red("ERROR: " + asset.src + " in " + module.name + " not found..skipping..."));
                                 return;
                             }
                             var dest = asset.dest || asset.src,
@@ -103,8 +100,7 @@ module.exports = function(req, res) {
                                 bundles[bundle].src.push(asset.src);
                             }
                             assets.push(dest);
-                            log = "PROCESS: " + asset.src + " in " + module.name + " linked to " + asset.dest;
-                            console.log(log.grey);
+                            console.log(chalk.grey("PROCESS: " + asset.src + " in " + module.name + " linked to " + asset.dest));
 
                         });
 
@@ -128,13 +124,11 @@ module.exports = function(req, res) {
                 var archive = archiver('zip'),
                     output = fs.createWriteStream(session + '/' + pkg.name + '.zip');
                 output.on('close', function() {
-                    log = 'Successfully zipped assets into (' + archive.pointer() + 'bytes)';
-                    console.log(log.green);
+                    console.log(chalk.green('Successfully zipped assets into (' + archive.pointer() + 'bytes)'));
                     resolve('Successfully zipped assets into (' + archive.pointer() + 'bytes)');
                 });
                 archive.on('error', function(err) {
-                    log = 'Error compiling archive: ' + err;
-                    console.log(log.red);
+                    console.log(chalk.red('Error compiling archive: ' + err));
                     reject('Error compiling archive: ' + session + ', ' + err);
                 });
                 archive.pipe(output);
@@ -158,25 +152,24 @@ module.exports = function(req, res) {
             var file = fs.createReadStream(session + '/' + pkg.name + '.zip');
             file.pipe(res);
             doCleanup();
-            log = 'Build session finalized: ' + session;
-            console.log(log.yellow);
-            console.log('Build process completed'.bgCyan.black);
+            console.log(chalk.yellow('Build session finalized: ' + session));
+            console.log(chalk.bgBlue('Build process completed'));
             req.end();
         }
 
         doInit()
             .then(function(result) {
-                console.log(result.green);
+                console.log(chalk.green(result));
                 return doCompile();
             }, function(err) {
-                console.log(err.bgRed.white);
+                console.log(chalk.bgRed(err));
                 doCleanup();
             })
             .then(function(result) {
-                console.log(result.green);
+                console.log(chalk.green(result));
                 return doZip();
             }, function(err) {
-                console.log(err.bgRed.white);
+                console.log(chalk.bgRed(err));
                 doCleanup();
             })
             .then(doDownload);
