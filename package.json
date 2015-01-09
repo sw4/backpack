@@ -1,37 +1,43 @@
 {
-  "name": "backpack-js",
-  "title": "backpack-js",
-  "description": "backpack-js",
-  "version": "0.0.6",
-  "homepage": "https://github.com/sw4/backpack",
-  "author": {
-    "name": "SW4"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/sw4/backpack.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sw4/backpack/issues"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/sw4/backpack/blob/master/LICENSE-MIT.md"
+    "name": "backpack-js",
+    "title": "backpack-js",
+    "description": "backpack-js",
+    "version": "0.0.6",
+    "homepage": "https://github.com/sw4/backpack",
+    "author": {
+        "name": "SW4"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/sw4/backpack.git"
+    },
+    "bugs": {
+        "url": "https://github.com/sw4/backpack/issues"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/sw4/backpack/blob/master/LICENSE-MIT.md"
+        }
+    ],
+    "engines": {
+        "node": ">=0.6"
+    },
+    "scripts": {
+        "test": "grunt travis --verbose"
+    },
+    "keywords": [
+        "node",
+        "compile",
+        "custom",
+        "build",
+        "module"
+    ],
+    "dependencies": {
+        "archiver": "^0.13.1",
+        "chalk": "^0.5.1",
+        "mkdirp": "^0.5.0",
+        "promise": "^6.0.1",
+        "rimraf": "^2.2.8"
     }
-  ],
-  "engines": {
-    "node": ">=0.6"
-  },
-  "scripts": {
-    "test": "grunt travis --verbose"
-  },
-  "keywords": ["node", "compile", "custom", "build", "module"],
-  "dependencies": {
-    "archiver": "^0.13.1",
-    "chalk": "^0.5.1"
-    "mkdirp": "^0.5.0",
-    "promise": "^6.0.1",
-    "rimraf": "^2.2.8"
-  }
 }
