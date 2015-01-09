@@ -42,7 +42,7 @@ You will need to create a `backpack.json` file in your project directory. This f
 ```
 
 
-#####`url` (string) optional, defaults to `/backpack`
+#####`url`<sup>(string) optional, defaults to `/backpack`</sup>
 
 This is the URL backpack will listen to in order to trigger a custom build- i.e. when this URL is requested.
 
