@@ -63,7 +63,7 @@ module.exports = function (req, res) {
 		function doCompile(){
 			return new Promise(function(resolve, reject) {
 				// Cross reference against configures modules
-				var bundleRef=[], bundles=[], assetSrc=[];
+				var bundleRef=[], bundles=[], pack=true;
 				config.modules.forEach(function(module, index, array){
 					// Module found
 					if(modules.indexOf(module.name)>-1){
@@ -71,7 +71,6 @@ module.exports = function (req, res) {
 						// loop through source assets													
 						
 						module.src.forEach(function(asset, index, array){
-							if(assetSrc.indexOf(asset.src)<0){
 								if (!fs.existsSync(asset.src)) {
 									log="ERROR: "+asset.src+" in "+module.name+" not found..skipping...";
 									console.log(log.red);
@@ -79,7 +78,6 @@ module.exports = function (req, res) {
 								}
 								var dest=asset.dest || asset.src, bundle;
 								bundle=bundleRef.indexOf(dest);
-								assetSrc.push(asset.src);
 								if(bundle<0){
 									// add to lookup
 									bundleRef.push(dest);
@@ -89,12 +87,21 @@ module.exports = function (req, res) {
 										src:[]								
 									})
 									bundle=bundleRef.length-1;
-								}						
-								bundles[bundle].src.push(asset.src);
+								}	
+								pack=true;
+								// dont add if already in current bundle
+								bundles[bundle].src.forEach(function(included){									
+									if(asset.src === included){
+										pack=false;
+									}
+								});
+								if(pack){
+									bundles[bundle].src.push(asset.src);
+								}
 								assets.push(dest);
 								log="PROCESS: "+asset.src+" in "+module.name+" linked to "+asset.dest;
 								console.log(log.grey);
-							}
+							
 						});
 						
 					};
